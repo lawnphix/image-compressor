@@ -3,3 +3,6 @@ compatibility_date = "2026-04-21"
 
 [assets]
 directory = "."
+html_handling = "none"
+not_found_handling = "none"
+exclude = [".git", ".wrangler", "wrangler.toml"]

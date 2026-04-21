@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Image Compressor &amp; Photo Optimizer | Squeeze by Burn Note</title>
+<meta name="description" content="Compress and optimize images free and privately. Everything runs in your browser — nothing is uploaded to a server.">
+<link rel="canonical" href="https://burnnote.io/image-compressor/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗜️</text></svg>">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WLW42QD7');</script>
+<!-- End Google Tag Manager -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Squeeze — Free Image Compressor",
+  "url": "https://burnnote.io/image-compressor/",
+  "description": "Free browser-based image compressor and photo optimizer. Compress JPEG, PNG, WebP and more with no file size limits and zero uploads.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Burn Note",
+    "url": "https://burnnote.io"
+  }
+}
+</script>
+<style>
+:root {
+  --bg: #0a0a0b;
+  --bg2: #111113;
+  --bg3: #18181c;
+  --bg4: #1e1e24;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #e8e8ec;
+  --text2: #8a8a96;
+  --text3: #55555f;
+  --accent: #e85d2f;
+  --accent2: #ff7a50;
+  --green: #2fb87a;
+  --green-bg: rgba(47,184,122,0.1);
+  --amber: #e8a22f;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --radius: 6px;
+  --radius-lg: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,11,0.92);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.nav-logo {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.nav-name {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.nav-sep { color: var(--text3); margin: 0 2px; }
+.nav-page { color: var(--text2); font-weight: 300; }
+.nav-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(47,184,122,0.2);
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+}
+
+/* HERO */
+.hero {
+  padding: 56px 32px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero-eyebrow { font-size: 14px !important; font-weight: inherit; line-height: inherit; margin: 0; }
+.hero-h1 { font-size: 32px; font-weight: 300; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 12px; }
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 14px !important;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 strong {
+  font-weight: 500;
+  color: #fff;
+}
+.hero-sub {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.hero-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.pill {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--border2);
+  border-radius: 99px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+
+/* MAIN APP */
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* CONTROLS STRIP */
+.controls-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  align-items: flex-end;
+}
+.ctrl {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 120px;
+}
+.ctrl label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+select {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  transition: border-color 0.15s;
+}
+select:hover, select:focus { border-color: var(--border2); }
+.quality-row { display: flex; align-items: center; gap: 8px; }
+input[type=range] {
+  flex: 1;
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+.q-val {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent2);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* DROP ZONE */
+.drop-zone {
+  border: 1px dashed var(--border2);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+  background: var(--bg2);
+}
+.drop-zone:hover, .drop-zone.over {
+  border-color: var(--accent);
+  background: rgba(232,93,47,0.04);
+}
+.drop-zone input { display: none; }
+.drop-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  background: var(--bg3);
+}
+.drop-icon svg { width: 18px; height: 18px; stroke: var(--text2); fill: none; stroke-width: 1.5; }
+.drop-title { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.drop-sub { font-size: 12px; color: var(--text3); }
+.drop-formats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+.fmt-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 3px 7px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text3);
+}
+.privacy-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--mono);
+}
+.privacy-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--green);
+}
+
+/* SUMMARY */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+.stat-val {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+.stat-val.green { color: var(--green); }
+
+/* FILE TABLE */
+.file-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg2);
+}
+.file-table-head {
+  display: grid;
+  grid-template-columns: 1fr 72px 72px 60px 64px 100px;
+  gap: 8px;
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+}
+.file-row {
+  display: grid;
+  grid-template-columns: 1fr 72px 72px 60px 64px 100px;
+  gap: 8px;
+  padding: 9px 14px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  transition: background 0.1s;
+}
+.file-row:last-child { border-bottom: none; }
+.file-row:hover { background: var(--bg3); }
+.fname-cell { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.thumb { width: 28px; height: 28px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border); }
+.fname-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: var(--text); }
+.mono-sm { font-family: var(--mono); font-size: 11px; color: var(--text2); }
+.savings-pct { font-family: var(--mono); font-size: 12px; font-weight: 500; }
+.s-good { color: var(--green); }
+.s-ok { color: var(--amber); }
+.fmt-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  color: var(--text2);
+  display: inline-block;
+}
+.status-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  display: inline-block;
+}
+.sp-pending { background: var(--bg4); color: var(--text3); border: 1px solid var(--border); }
+.sp-working { background: rgba(232,93,47,0.1); color: var(--accent2); border: 1px solid rgba(232,93,47,0.2); }
+.sp-done { background: var(--green-bg); color: var(--green); border: 1px solid rgba(47,184,122,0.2); }
+.row-actions { display: flex; gap: 4px; flex-wrap: nowrap; }
+
+/* BUTTONS */
+.btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 9px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.btn-ghost { background: transparent; color: var(--text3); border-color: transparent; }
+.btn-ghost:hover { background: var(--bg3); color: var(--text2); border-color: var(--border); }
+.btn:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+
+/* ACTIONS ROW */
+.actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.btn-lg {
+  font-size: 12px;
+  padding: 8px 16px;
+}
+
+/* PREVIEW */
+.preview-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 12px 0;
+  background: var(--bg2);
+}
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+}
+.preview-title { font-family: var(--mono); font-size: 11px; color: var(--text2); }
+.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.preview-side { padding: 12px; }
+.preview-side:first-child { border-right: 1px solid var(--border); }
+.preview-lbl { font-family: var(--mono); font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.preview-side img { width: 100%; border-radius: 4px; display: block; border: 1px solid var(--border); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy { font-size: 12px; color: var(--text3); font-family: var(--mono); }
+.footer-link { color: var(--text3); text-decoration: none; transition: color 0.1s; }
+.footer-link:hover { color: var(--accent); }
+
+/* HIDDEN */
+[hidden] { display: none !important; }
+
+@media (max-width: 600px) {
+  nav, .hero, .app-container { padding-left: 16px; padding-right: 16px; }
+  .hero h1 { font-size: 24px; }
+  .summary-bar { grid-template-columns: 1fr 1fr; }
+  .file-table-head { display: none; }
+  .file-row { grid-template-columns: 1fr auto; grid-template-rows: auto auto; font-size: 11px; gap: 4px; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLW42QD7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav>
+  <a class="nav-brand" href="https://burnnote.io">
+    <div class="nav-logo">BN</div>
+    <span class="nav-name">Burn Note<span class="nav-sep"> / </span><span class="nav-page">Squeeze</span></span>
+  </a>
+  <span class="nav-badge">&#x25CF;&nbsp;Client-side only</span>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-eyebrow">Free image compressor</h1>
+  <h2 class="hero-h1">Compress &amp; optimize images <strong>without<br>sending them anywhere.</strong></h2>
+  <p class="hero-sub">Squeeze is a free image compressor and photo optimizer that runs entirely in your browser. No images uploaded, no servers involved. Compress photos and images with lossy or lossless modes, convert to WebP, resize — all free, all private.</p>
+  <div class="hero-pills">
+    <span class="pill">No file size limit</span>
+    <span class="pill">Batch + ZIP download</span>
+    <span class="pill">WebP / AVIF output</span>
+    <span class="pill">Before/after preview</span>
+    <span class="pill">Resize on export</span>
+    <span class="pill">Zero uploads</span>
+  </div>
+</section>
+
+<div class="app-container">
+
+  <div class="controls-strip">
+    <div class="ctrl">
+      <label>Mode</label>
+      <select id="mode">
+        <option value="lossy">Lossy</option>
+        <option value="lossless">Lossless</option>
+      </select>
+    </div>
+    <div class="ctrl" id="quality-ctrl">
+      <label>Quality</label>
+      <div class="quality-row">
+        <input type="range" id="quality" min="1" max="100" value="80" step="1">
+        <span class="q-val" id="q-val">80</span>
+      </div>
+    </div>
+    <div class="ctrl">
+      <label>Output format</label>
+      <select id="format">
+        <option value="original">Keep original</option>
+        <option value="image/webp">WebP</option>
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/png">PNG</option>
+      </select>
+    </div>
+    <div class="ctrl">
+      <label>Max width</label>
+      <select id="resize">
+        <option value="">No resize</option>
+        <option value="3840">4K (3840px)</option>
+        <option value="1920">1080p (1920px)</option>
+        <option value="1280">720p (1280px)</option>
+        <option value="800">800px</option>
+        <option value="600">600px</option>
+        <option value="400">400px</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="drop-zone" id="drop-zone">
+    <input type="file" id="file-input" accept="image/*" multiple>
+    <div class="drop-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+    </div>
+    <div class="drop-title">Drop images here or click to browse</div>
+    <div class="drop-formats">
+      <span class="fmt-tag">PNG</span><span class="fmt-tag">JPEG</span><span class="fmt-tag">WebP</span>
+      <span class="fmt-tag">GIF</span><span class="fmt-tag">SVG</span><span class="fmt-tag">AVIF</span>
+      <span class="fmt-tag">HEIC</span>
+    </div>
+    <div class="privacy-note">
+      <span class="privacy-dot"></span>
+      Nothing leaves your device — all processing is local
+    </div>
+  </div>
+
+  <div id="summary-area" hidden>
+    <div class="summary-bar" id="summary-cards"></div>
+  </div>
+
+  <div id="preview-area"></div>
+
+  <div id="files-area" hidden>
+    <div class="file-table-wrap">
+      <div class="file-table-head">
+        <span>File</span><span>Original</span><span>Output</span><span>Saved</span><span>Format</span><span>Actions</span>
+      </div>
+      <div id="file-list"></div>
+    </div>
+    <div class="actions-row">
+      <button class="btn btn-accent btn-lg" id="optimize-all-btn" disabled>Optimize all</button>
+      <button class="btn btn-lg" id="download-all-btn" disabled>Download ZIP</button>
+      <button class="btn btn-ghost btn-lg" id="clear-btn">Clear all</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-copy">Squeeze by <a href="https://burnnote.io" class="footer-link">Burn Note</a> — private tools for private data</span>
+  <span class="footer-copy">No tracking · No uploads · No BS</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const files = [];
+let fid = 0;
+
+const $ = id => document.getElementById(id);
+const dropZone = $('drop-zone'), fileInput = $('file-input'), fileList = $('file-list');
+const filesArea = $('files-area'), summaryArea = $('summary-area'), summaryCards = $('summary-cards');
+const optimizeAllBtn = $('optimize-all-btn'), downloadAllBtn = $('download-all-btn'), clearBtn = $('clear-btn');
+const qualitySlider = $('quality'), qVal = $('q-val'), modeSelect = $('mode');
+
+qualitySlider.addEventListener('input', () => { qVal.textContent = qualitySlider.value; });
+modeSelect.addEventListener('change', () => {
+  $('quality-ctrl').style.opacity = modeSelect.value === 'lossless' ? '0.35' : '1';
+});
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('over'); addFiles(e.dataTransfer.files); });
+fileInput.addEventListener('change', () => { addFiles(fileInput.files); fileInput.value = ''; });
+optimizeAllBtn.addEventListener('click', optimizeAll);
+downloadAllBtn.addEventListener('click', downloadAll);
+clearBtn.addEventListener('click', clearAll);
+
+function addFiles(list) {
+  Array.from(list).forEach(f => {
+    if (!f.type.startsWith('image/') && f.type !== '') return;
+    files.push({ id: ++fid, file: f, status: 'pending', optimizedBlob: null, originalUrl: URL.createObjectURL(f) });
+  });
+  render();
+  filesArea.removeAttribute('hidden');
+  optimizeAllBtn.disabled = false;
+  updateSummary();
+}
+
+function fmt(b) {
+  if (b >= 1048576) return (b/1048576).toFixed(1)+' MB';
+  return Math.round(b/1024)+' KB';
+}
+
+function render() {
+  fileList.innerHTML = '';
+  files.forEach(e => {
+    const pct = e.optimizedBlob ? Math.round((1 - e.optimizedBlob.size / e.file.size) * 100) : null;
+    const sClass = pct !== null ? (pct >= 40 ? 's-good' : 's-ok') : '';
+    const outFmt = e.optimizedBlob ? e.optimizedBlob.type.split('/')[1].toUpperCase().replace('JPEG','JPG') : '';
+    const statusCell = e.optimizedBlob
+      ? `<span class="fmt-pill">${outFmt}</span>`
+      : `<span class="status-pill ${e.status==='processing'?'sp-working':e.status==='done'?'sp-done':'sp-pending'}">${e.status==='processing'?'working':e.status}</span>`;
+    const actionsCell = e.optimizedBlob
+      ? `<button class="btn" data-event="preview_image" onclick="showPreview(${e.id})">Preview</button><button class="btn btn-accent" data-event="save_image" onclick="dlOne(${e.id})">Save</button>`
+      : `<button class="btn btn-accent" data-event="optimize_image" onclick="optOne(${e.id})">Optimize</button>`;
+    const row = document.createElement('div');
+    row.className = 'file-row';
+    row.id = 'row-' + e.id;
+    row.innerHTML = `
+      <div class="fname-cell">
+        <img class="thumb" src="${e.originalUrl}" alt="">
+        <span class="fname-text" title="${e.file.name}">${e.file.name}</span>
+      </div>
+      <span class="mono-sm">${fmt(e.file.size)}</span>
+      <span class="mono-sm">${e.optimizedBlob ? fmt(e.optimizedBlob.size) : '—'}</span>
+      <span class="savings-pct ${sClass}">${pct !== null ? pct+'%' : '—'}</span>
+      <span>${statusCell}</span>
+      <div class="row-actions">${actionsCell}<button class="btn btn-ghost" onclick="removeFile(${e.id})">✕</button></div>`;
+    fileList.appendChild(row);
+  });
+}
+
+async function optOne(id) {
+  const e = files.find(f => f.id === id);
+  if (!e) return;
+  e.status = 'processing';
+  render();
+  try {
+    e.optimizedBlob = await compress(e.file);
+    e.status = 'done';
+  } catch(err) {
+    e.status = 'pending';
+    console.error(err);
+  }
+  render();
+  updateSummary();
+  downloadAllBtn.disabled = !files.some(f => f.status === 'done');
+}
+
+async function optimizeAll() {
+  optimizeAllBtn.disabled = true;
+  optimizeAllBtn.textContent = 'Working…';
+  for (const e of files) {
+    if (e.status !== 'done') await optOne(e.id);
+  }
+  optimizeAllBtn.textContent = 'Optimize all';
+  optimizeAllBtn.disabled = false;
+}
+
+function compress(file) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let w = img.naturalWidth, h = img.naturalHeight;
+      const maxW = parseInt($('resize').value) || 0;
+      if (maxW && w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      const fmt = $('format').value;
+      const outType = fmt === 'original' ? (file.type || 'image/jpeg') : fmt;
+      const q = modeSelect.value === 'lossless' ? 1.0 : parseInt(qualitySlider.value) / 100;
+      c.toBlob(blob => { if (!blob) rej(new Error('toBlob failed')); else res(blob); }, outType, q);
+    };
+    img.onerror = rej;
+    img.src = url;
+  });
+}
+
+function dlOne(id) {
+  const e = files.find(f => f.id === id);
+  if (!e?.optimizedBlob) return;
+  const ext = e.optimizedBlob.type.split('/')[1].replace('jpeg','jpg');
+  const base = e.file.name.replace(/\.[^.]+$/, '');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(e.optimizedBlob);
+  a.download = base + '-squeezed.' + ext;
+  a.click();
+}
+
+async function downloadAll() {
+  const done = files.filter(f => f.optimizedBlob);
+  if (!done.length) return;
+  downloadAllBtn.disabled = true;
+  downloadAllBtn.textContent = 'Building ZIP…';
+  const zip = new JSZip();
+  done.forEach(e => {
+    const ext = e.optimizedBlob.type.split('/')[1].replace('jpeg','jpg');
+    zip.file(e.file.name.replace(/\.[^.]+$/, '') + '-squeezed.' + ext, e.optimizedBlob);
+  });
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'squeezed-images.zip';
+  a.click();
+  downloadAllBtn.disabled = false;
+  downloadAllBtn.textContent = 'Download ZIP';
+}
+
+function removeFile(id) {
+  const idx = files.findIndex(f => f.id === id);
+  if (idx > -1) files.splice(idx, 1);
+  render();
+  updateSummary();
+  if (!files.length) { filesArea.setAttribute('hidden',''); summaryArea.setAttribute('hidden',''); }
+}
+
+function clearAll() {
+  files.length = 0; render(); updateSummary();
+  filesArea.setAttribute('hidden',''); summaryArea.setAttribute('hidden','');
+  $('preview-area').innerHTML = '';
+  downloadAllBtn.disabled = true;
+}
+
+function updateSummary() {
+  const done = files.filter(f => f.optimizedBlob);
+  if (!done.length) { summaryArea.setAttribute('hidden',''); return; }
+  summaryArea.removeAttribute('hidden');
+  const orig = done.reduce((s,f) => s + f.file.size, 0);
+  const opt = done.reduce((s,f) => s + f.optimizedBlob.size, 0);
+  const saved = orig - opt;
+  const pct = Math.round((1 - opt/orig) * 100);
+  summaryCards.innerHTML = `
+    <div class="stat"><div class="stat-lbl">Optimized</div><div class="stat-val">${done.length} file${done.length!==1?'s':''}</div></div>
+    <div class="stat"><div class="stat-lbl">Original</div><div class="stat-val">${fmt(orig)}</div></div>
+    <div class="stat"><div class="stat-lbl">Output</div><div class="stat-val">${fmt(opt)}</div></div>
+    <div class="stat"><div class="stat-lbl">Saved</div><div class="stat-val green">${fmt(saved)} · ${pct}%</div></div>`;
+}
+
+function showPreview(id) {
+  const e = files.find(f => f.id === id);
+  if (!e?.optimizedBlob) return;
+  const optUrl = URL.createObjectURL(e.optimizedBlob);
+  const area = $('preview-area');
+  area.innerHTML = `
+    <div class="preview-panel">
+      <div class="preview-header">
+        <span class="preview-title">${e.file.name}</span>
+        <button class="btn btn-ghost" style="padding:2px 8px" onclick="$('preview-area').innerHTML=''">Close</button>
+      </div>
+      <div class="preview-grid">
+        <div class="preview-side">
+          <div class="preview-lbl">Original · ${fmt(e.file.size)}</div>
+          <img src="${e.originalUrl}" alt="original">
+        </div>
+        <div class="preview-side">
+          <div class="preview-lbl">Squeezed · ${fmt(e.optimizedBlob.size)}</div>
+          <img src="${optUrl}" alt="optimized">
+        </div>
+      </div>
+    </div>`;
+  area.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>
